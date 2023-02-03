@@ -17,7 +17,7 @@ describe('ClientsController', () => {
         ...dto,
       };
     }),
-    delete: jest.fn().mockImplementation((id) => {
+    remove: jest.fn().mockImplementation((id) => {
       return {
         id,
       };
@@ -80,5 +80,13 @@ describe('ClientsController', () => {
     });
 
     expect(mockClientsService.update).toHaveBeenCalled();
+  });
+
+  it('should remove client', () => {
+    expect(controller.remove('56a8c2b7-94de-4110-85b0-2ba21685ea54')).toEqual({
+      id: '56a8c2b7-94de-4110-85b0-2ba21685ea54',
+    });
+
+    expect(mockClientsService.remove).toHaveBeenCalled();
   });
 });
