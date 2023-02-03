@@ -22,9 +22,15 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Descrição do desafio
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+O desafio lançado propões otimizar a rotina de um restaurante através da criação de um PDV.
+Utilizando o NestJS que é um framework com alta escalabilidade e eficiência baseado em NodeJS e escrito em Typescript, foi possível criar uma aplicação com baixa demanda de recursos e com responses rápidas.
+Para atender ao desafio foram criadas várias rotinas que não otimizam várias atividades dentro da rotina como também se preocupam em garantir a integridade dos dados que estão sendo armazenados e posteriormente consumidos.
+Para uma melhor CI o projeto foi desenvolvido já com configurações prontas para poder exibir um ambiente de produção e um ambiente de desenvolvimento, podendo ainda ser adicionado um de homologação.
+Assim o cliente poderá usar, reportar e ter suas novas features ou fixs atendidos de forma rápida e ágil.
+
+Para uso siga os passoa abaixo:
 
 ## Installation
 
