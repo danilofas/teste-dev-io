@@ -1,4 +1,11 @@
-import { Body, Controller, Param, Put } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Param,
+  Put,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { OrdersActionService } from '../services/orders-actions.service';
 
@@ -7,18 +14,25 @@ import { OrdersActionService } from '../services/orders-actions.service';
 export class OrdersActionsController {
   constructor(private readonly ordersActionService: OrdersActionService) {}
 
-  @Put('adicionar-produtos/:idOrder')
+  @Put('add-product/:idOrder')
   updateAddProducts(
     @Param('idOrder') idOrder: string,
-    @Body() productsToUpdate: string[],
+    @Body()
+    productsToUpdate: [],
   ) {
+    if (!idOrder || !productsToUpdate) {
+      throw new BadRequestException(
+        'idOrder e productsToUpdate são obrigatórios',
+      );
+    }
+
     return this.ordersActionService.updateAddProducts(
       idOrder,
       productsToUpdate,
     );
   }
 
-  @Put('remover-produto/:idOrder')
+  @Put('remove-product/:idOrder')
   updateRemoveProducts(
     @Param('idOrder') idOrder: string,
     @Body() productsToUpdate: string[],
@@ -29,18 +43,28 @@ export class OrdersActionsController {
     );
   }
 
-  @Put('finalizar/:idOrder')
+  @Put('finalize/:idOrder')
   updateFinishOrder(@Param('idOrder') idOrder: string) {
     return this.ordersActionService.updateFinishOrder(idOrder);
   }
 
-  //   @Put('cancelar/:idOrder')
-  //   updateCancelOrder(@Param('idOrder') idOrder: string) {
-  //     return this.ordersActionService.updateCancelOrder(idOrder);
-  //   }
+  @Put('cancel/:idOrder')
+  updateCancelOrder(@Param('idOrder') idOrder: string) {
+    return this.ordersActionService.updateCancelOrder(idOrder);
+  }
 
-  @Put('imprmir/:idOrder')
+  @Put('print/:idOrder')
   updatePrintOrder(@Param('idOrder') idOrder: string) {
     return this.ordersActionService.updatePrintOrder(idOrder);
+  }
+
+  @Get('list-all-orders-in-progress')
+  findAll() {
+    return this.ordersActionService.findAll();
+  }
+
+  @Get('order-resume/:idOrder')
+  findOne(@Param('idOrder') idOrder: string) {
+    return this.ordersActionService.getResumeOrder(idOrder);
   }
 }

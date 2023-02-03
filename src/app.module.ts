@@ -12,13 +12,13 @@ import { Order } from './orders/entities/order.entity';
 import { OrdersModule } from './orders/orders.module';
 import { Product } from './products/entities/product.entity';
 import { ProductsModule } from './products/products.module';
-
 @Module({
   imports: [
     SequelizeModule.forRoot({
       dialect: 'sqlite',
       host: join(__dirname, 'db.sqlite'),
       autoLoadModels: true,
+      storage: './src/database/db.sqlite',
       models: [Product, Order, Client, OrderProduct],
     }),
     ProductsModule,

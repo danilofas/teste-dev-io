@@ -1,4 +1,4 @@
-import { OrderProduct } from './../../orderproduct/entities/orderproduct.entity';
+import { OrderProduct } from '../entities/orderproduct.entity';
 export const OrderProductsProvider = [
   {
     provide: 'OrderProductsRepository',

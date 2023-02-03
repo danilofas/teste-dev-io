@@ -6,8 +6,8 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { OrderProduct } from 'src/orderproduct/entities/orderproduct.entity';
-import { Order } from 'src/orders/entities/order.entity';
+import { OrderProduct } from '../../orderproduct/entities/orderproduct.entity';
+import { Order } from '../../orders/entities/order.entity';
 
 @Table({
   tableName: 'products',

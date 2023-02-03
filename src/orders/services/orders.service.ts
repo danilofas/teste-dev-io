@@ -16,7 +16,7 @@ export class OrdersService {
   ) {}
   async create(createOrderDto: CreateOrderDto): Promise<any> {
     try {
-      this.orderModel.create({
+      await this.orderModel.create({
         clientId: createOrderDto.clientId,
         amount: createOrderDto.amount,
         observation: createOrderDto.observation,
@@ -26,17 +26,26 @@ export class OrdersService {
         productsId: createOrderDto.productsId,
       });
 
-      const orderId = await this.findLastOne();
+      const orderId = await this.orderModel.findOne({
+        order: [['createdAt', 'DESC']],
+      });
 
       if (orderId !== null) {
-        createOrderDto.productsId.forEach((element) => {
-          this.orderProductModel.create({
-            orderId: orderId !== null ? orderId.id : 0,
-            productId: element.productId,
-            quantity: element.quantity,
-          });
+        createOrderDto.productsId.map((element) => {
+          console.log(element);
+          this.orderProductModel
+            .create({
+              orderId: orderId?.id,
+              productId: element.productId,
+              quantity: element.quantity,
+            })
+            .catch((error) => {
+              return {
+                error: error.message,
+                message: 'Erro ao criar o pedido',
+              };
+            });
         });
-
         const orderCreated = await this.findLastOne();
         return orderCreated;
       }
