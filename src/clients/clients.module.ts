@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { ClientsController } from './clients.controller';
 import { ClientsService } from './clients.service';
+import { ClientsController } from './controllers/clients.controller';
 import { Client } from './entities/client.entity';
 
 @Module({

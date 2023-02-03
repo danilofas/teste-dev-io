@@ -8,10 +8,10 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { Client } from 'src/clients/entities/client.entity';
-import { OrderProduct } from 'src/orderproduct/entities/orderproduct.entity';
-import { OrderStatus } from 'src/orders/enums/order-status.enum';
-import { Product } from 'src/products/entities/product.entity';
+import { Client } from '../../clients/entities/client.entity';
+import { OrderProduct } from '../../orderproduct/entities/orderproduct.entity';
+import { Product } from '../../products/entities/product.entity';
+import { OrderStatus } from '../enums/order-status.enum';
 
 @Table({
   tableName: 'orders',

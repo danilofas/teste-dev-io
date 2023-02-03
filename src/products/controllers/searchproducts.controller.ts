@@ -7,17 +7,17 @@ import { ProductsService } from '../products.service';
 export class SearchProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Get('listar-primeiros-dez')
+  @Get('list-top-ten')
   listFirstTen() {
     return this.productsService.listFirstTen();
   }
 
-  @Get('buscar-por-codigo/:code')
+  @Get('search-by-code/:code')
   findByCode(@Param('code') code: number) {
     return this.productsService.findByCode(code);
   }
 
-  @Get('buscar-por-nome/:title')
+  @Get('search-by-title/:title')
   findByTitle(@Param('title') title: string) {
     return this.productsService.findByTitle(title);
   }
